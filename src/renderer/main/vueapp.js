@@ -297,7 +297,6 @@ const app = new Vue({
       this.setLzManual();
       clearTimeout(this.hangtimer);
       document.body.removeAttribute("loading");
-      ipcRenderer.invoke("renderer-ready", true);
       document.querySelector("#LOADER").remove();
     },
     getAppStyle() {
@@ -1142,7 +1141,7 @@ const app = new Vue({
       document.querySelector("#apple-music-video-player-controls").addEventListener("mousemove", () => {
         this.showFoo(".music-player-info", 2000);
       });
-      ipcRenderer.invoke("renderer-ready", true);
+      ipcRenderer.send("renderer-ready");
       document.querySelector("#LOADER").remove();
       if (this.cfg.general.themeUpdateNotification && !this.isDev) {
         this.checkForThemeUpdates();

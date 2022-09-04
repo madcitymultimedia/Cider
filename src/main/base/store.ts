@@ -3,7 +3,8 @@ import { app, ipcMain } from "electron";
 import fetch from "electron-fetch";
 import { existsSync } from "fs";
 import { join } from "path";
-import { utils } from "./utils";
+import { utils } from "./utils.js";
+import { osLocaleSync } from "os-locale";
 
 export class Store {
   static cfg: ElectronStore;
@@ -232,7 +233,8 @@ export class Store {
   };
 
   constructor() {
-    this.defaults.general.language = this.checkLocale(app.getLocale().replace("-", "_")) ?? "en_US";
+    this.defaults.general.language = this.checkLocale(osLocaleSync().replace("-", "_")) ?? "en_US";
+
     Store.cfg = new ElectronStore({
       name: "cider-config",
       defaults: this.defaults,

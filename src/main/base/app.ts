@@ -1,8 +1,8 @@
 import { app, Menu, nativeImage, Tray, ipcMain, clipboard, shell } from "electron";
-import { readFileSync } from "fs";
-import * as path from "path";
+import { readFileSync } from "node:fs";
+import * as path from "node:path";
 import * as log from "electron-log";
-import { utils } from "./utils";
+import { utils } from "./utils.js";
 
 /**
  * @file Creates App instance
@@ -328,10 +328,10 @@ export class AppEvents {
 
             {
                 visible: visible,
-                label: 'track info',  
-                enabled: false,          
+                label: 'track info',
+                enabled: false,
             },
-            
+
             {type: 'separator'},
             */
 

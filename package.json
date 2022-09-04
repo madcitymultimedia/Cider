@@ -5,11 +5,15 @@
   "version": "1.5.7",
   "description": "A new cross-platform Apple Music experience based on Electron and Vue.js written from scratch with performance in mind.",
   "license": "AGPL-3.0",
-  "main": "./build/index.js",
+  "exports": "./build/index.js",
+  "type": "module",
   "author": "Cider Collective <cryptofyre@cider.sh> (https://cider.sh)",
   "repository": "github:ciderapp/Cider",
   "bugs": {
     "url": "https://github.com/ciderapp/Cider/issues?q=is%3Aopen+is%3Aissue+label%3Abug"
+  },
+  "engines": {
+    "node": ">=14.16"
   },
   "homepage": "https://cider.sh/",
   "buildResources": "resources",
@@ -63,6 +67,7 @@
     "music-metadata": "7.12.6",
     "node-gyp": "^9.1.0",
     "node-ssdp": "^4.0.1",
+    "os-locale": "^6.0.2",
     "qrcode": "^1.5.1",
     "request": "^2.88.2",
     "run-script-os": "^1.1.6",

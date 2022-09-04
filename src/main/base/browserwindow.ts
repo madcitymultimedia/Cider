@@ -1,22 +1,21 @@
-import { join } from "path";
+import { join } from "node:path";
 import { app, BrowserWindow as bw, ipcMain, ShareMenu, shell, screen, dialog } from "electron";
-import * as windowStateKeeper from "electron-window-state";
-import * as express from "express";
-import * as getPort from "get-port";
+import windowStateKeeper from "electron-window-state";
+import express from "express";
+import getPort from "get-port";
 import { search } from "youtube-search-without-api-key";
-import { existsSync, rmSync, mkdirSync, readdirSync, readFileSync, writeFileSync, statSync, unlinkSync, rmdirSync, lstatSync } from "fs";
-import { Stream } from "stream";
-import { networkInterfaces } from "os";
+import { existsSync, rmSync, mkdirSync, readdirSync, readFileSync, writeFileSync, statSync, unlinkSync, rmdirSync, lstatSync } from "node:fs";
+import { Stream } from "node:stream";
+import { networkInterfaces, release } from "node:os";
 import * as mm from "music-metadata";
-import fetch from "electron-fetch";
-import { wsapi } from "./wsapi";
-import { utils } from "./utils";
-import { Plugins } from "./plugins";
+import fetch from 'electron-fetch'
+import { wsapi } from "./wsapi.js";
+import { utils } from "./utils.js";
+import { Plugins } from "./plugins.js";
 import { watch } from "chokidar";
-import * as os from "os";
 import wallpaper from "wallpaper";
 import * as AdmZip from "adm-zip";
-import { LocalFiles } from "../providers/local/";
+import { LocalFiles } from "../providers/local/index.js";
 
 /**
  * @file Creates the BrowserWindow
@@ -38,7 +37,7 @@ export class BrowserWindow {
     env: {
       platform: process.platform,
       dev: app.isPackaged,
-      osRelease: os.release(),
+      osRelease: release(),
       updatable: !process.windowsStore || !process.mas,
       useV3: utils.getStoreValue("advanced.experiments").includes("ampv3"),
       components: [

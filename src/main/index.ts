@@ -63,7 +63,7 @@ app.on("ready", () => {
  * Renderer Event Handlers
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-ipcMain.handle("renderer-ready", (event) => {
+ipcMain.on("renderer-ready", (event) => {
   CiderPlug.callPlugins("onRendererReady", event);
 });
 
